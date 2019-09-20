@@ -14,8 +14,25 @@ import processing.core.PGraphics;
  * MOOC team
  *
  */
-public class AirportMarker extends CommonMarker {
+public class AirportMarker extends CommonMarker implements Comparable<AirportMarker> {
 	public static List<SimpleLinesMarker> routes;
+	public int routeCount;
+	
+	public int compareTo(AirportMarker marker) {
+
+		float test = marker.routeCount - this.routeCount;
+
+		if (test < 0) {
+			return -1;
+		} else if (test > 0) {
+			return 1;
+		} else
+			return 0;
+	}
+	
+	public void setRouteCount(int x)	{
+		this.routeCount = x;
+	}
 	
 	public AirportMarker(Feature city) {
 		super(((PointFeature)city).getLocation(), city.getProperties());
@@ -24,8 +41,8 @@ public class AirportMarker extends CommonMarker {
 	
 	@Override
 	public void drawMarker(PGraphics pg, float x, float y) {
-		pg.fill(11);
-		pg.ellipse(x, y, 5, 5);
+		pg.fill(pg.color(255));
+		pg.ellipse(x, y, radius, radius);
 		
 		
 	}
