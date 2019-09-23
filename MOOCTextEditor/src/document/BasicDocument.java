@@ -1,5 +1,6 @@
 package document;
 
+import java.util.Arrays;
 import java.util.List;
 
 /** 
@@ -36,7 +37,10 @@ public class BasicDocument extends Document
 	{
 		//TODO: Implement this method in week 2 according to the comments above.  
 		// See the Module 2 support videos if you need help.
-	    return 0;
+		String regex = "[a-zA-Z]+";
+		int wordCount = getTokens(regex).size();
+
+	    return wordCount;
 	}
 	
 	/**
@@ -56,7 +60,10 @@ public class BasicDocument extends Document
 	{
 	    //TODO: Implement this method.  See the Module 2 support videos 
         // if you need help.
-        return 0;
+		String regex = "[^.!?]+";
+		int sentCount = getTokens(regex).size();
+
+	    return sentCount;
 	}
 	
 	/**
@@ -81,7 +88,14 @@ public class BasicDocument extends Document
 		// expression for the syllable counting.  We recommend you implement 
 		// the helper function countSyllables in Document.java using a loop, 
 		// and then call it here on each word.
-        return 0;
+		
+		//get the list of words in the text
+		List<String> vowels = getTokens("[aeiouyAEIOUY]+");
+		List<String> loneE = getTokens("[^aeiouyAEIOUY]+[eE]\\b");
+		List<String> singleE = getTokens("\\b[^aeiouyAEIOUY]*[eE]\\b");
+		
+		int sylCount = vowels.size() - loneE.size() + singleE.size();
+        return sylCount;
 	}
 	
 	

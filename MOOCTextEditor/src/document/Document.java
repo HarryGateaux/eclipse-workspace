@@ -66,7 +66,7 @@ public abstract class Document {
 	{
 		// TODO: Implement this method so that you can call it from the 
 	    // getNumSyllables method in BasicDocument (module 2) and 
-	    // EfficientDocument (module 3).
+	    // EfficientDocument (module 3).	
 	    return 0;
 	}
 	
@@ -132,7 +132,10 @@ public abstract class Document {
 	{
 	    // TODO: You will play with this method in week 1, and 
 		// then implement it in week 2
-	    return this.text.length();
+
+		
+		double fleischScore = 206.835 - 1.015 * getNumWords()/getNumSentences() - 84.6 * getNumSyllables()/getNumWords();
+		return fleischScore;
 	}
 	
 	
