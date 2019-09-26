@@ -22,7 +22,7 @@ public class MarkovTextGeneratorGrader {
             } catch (Exception e) {
                 feedback += "Error thrown. ";
             }
-
+            
             gen.train("");
             feedback += "\n** Test 2: Generating text after training on an empty file...";
             try {
@@ -67,6 +67,7 @@ public class MarkovTextGeneratorGrader {
             feedback += "\n** Test #7: Requesting zero words...";
             feedback += "Generator generated: " + gen.generateText(0) + ". ";
 
+            
             gen.train("");
             res = gen.generateText(LENGTH);
             words = res.split("[\\s]+");
